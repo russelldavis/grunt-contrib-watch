@@ -53,6 +53,7 @@ module.exports = function(grunt) {
 
   // When taskrun is reloaded
   taskrun.on('reload', function() {
+    grunt.event.emit('reload');
     taskrun.clearRequireCache(Object.keys(changedFiles));
     grunt.log.writeln('').writeln('Reloading watch config...'.cyan);
   });
