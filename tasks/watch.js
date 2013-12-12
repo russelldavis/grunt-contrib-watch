@@ -136,9 +136,15 @@ module.exports = function(grunt) {
           }
 
           // If Gruntfile.js changed, reload self task
-          if (/gruntfile\.(js|coffee)/i.test(filepath)) {
-            taskrun.reload = true;
-          }
+          //
+          // The reload implementation is kind of scary and has some issues
+          // (events from old instances continue to fire, server tasks from old
+          // instances don't get closed, and who knows what else is lurking),
+          // so I'm commenting this out for now.
+          //
+          // if (/gruntfile\.(js|coffee)/i.test(filepath)) {
+          //   taskrun.reload = true;
+          // }
 
           // Emit watch events if anyone is listening
           if (grunt.event.listeners('watch').length > 0) {
